@@ -17,11 +17,19 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         showContact()
-        binding.btnnext.setOnClickListener {
+        binding.btnFloating.setOnClickListener {
             val intent = Intent(this,AddContacts::class.java)
             startActivity(intent)
         }
     }
+//    override fun onResume( ){
+//        super.onResume()
+//        displayContacts()
+//        binding.btnFloating.setOnClickListener {
+//            val intent= Intent(this,AddContacts::class.java)
+//            startActivity(intent)
+//        }
+//    }
     fun showContact(){
         val contact1=ContactsData("","Joy smiley","07856789745","joysmiley@gmail.com")
         val contact2=ContactsData("https://images.unsplash.com/photo-1484950763426-56b5bf172dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJsYWNrJTIwcGVyc29uJTIwJTIwcHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60","Brenda Waeni","0789047567","brendawaeni@gmail.com")
