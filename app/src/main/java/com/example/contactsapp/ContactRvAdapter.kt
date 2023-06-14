@@ -1,10 +1,13 @@
 package com.example.contactsapp
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.databinding.ActivityMainBinding
 import com.example.contactsapp.databinding.ContactListItemBinding
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 class ContactRvAdapter ( var
                          contactList:List<ContactsData>):RecyclerView.Adapter<ContactRvAdapter.ContactViewHolder>() {
@@ -18,10 +21,15 @@ class ContactRvAdapter ( var
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val currentContact=contactList.get(position)
         val binding=holder.binding
-        binding.ivAvatar.tag=currentContact.image
         binding.tvNames.text=currentContact.AllNames
         binding.tvPhonenumber.text =currentContact.phoneNumber
         binding.tvEmail.text=currentContact.emailAddress
+        Picasso.get()
+            .load(currentContact.image)
+            .resize(40,40)
+            .centerCrop(Gravity.CENTER)
+            .transform(CropCircleTransformation())
+            .into(binding.ivAvatar)
     }
 
     override fun getItemCount(): Int {
